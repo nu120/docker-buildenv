@@ -49,3 +49,7 @@ RUN apt update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && pip3 install meson ninja
+
+COPY welcome.sh /usr/bin/
+ENTRYPOINT ["/usr/bin/welcome.sh"]
+CMD ["/bin/bash"]
