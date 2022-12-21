@@ -50,6 +50,11 @@ RUN apt update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && update-alternatives --install /usr/bin/python python /usr/bin/python2.7 10 \
+    && curl https://storage.googleapis.com/git-repo-downloads/repo > /usr/bin/repo \
+    && chmod +x /usr/bin/repo \
+    && git config --global user.email "nugulinux@gmail.com" \
+    && git config --global user.name "nugulinux-bot" \
+    && git config --global color.ui true \
     && pip3 install meson ninja
 
 COPY welcome.sh /usr/bin/
