@@ -55,6 +55,8 @@ RUN apt update \
     && git config --global user.email "nugulinux@gmail.com" \
     && git config --global user.name "nugulinux-bot" \
     && git config --global color.ui true \
+    && mkdir -p /root/.ssh \
+    && ssh-keyscan -t rsa github.com > /root/.ssh/known_hosts \
     && pip3 install meson ninja
 
 COPY welcome.sh /usr/bin/
