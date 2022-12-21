@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 
 ENV DEBIAN_FRONTEND=noninteractive \
     LANG=C \
@@ -28,6 +28,7 @@ RUN apt update \
         moreutils \
         patch \
         pkg-config \
+        python2.7 \
         python3-pip \
         rsync \
         sed \
@@ -48,6 +49,7 @@ RUN apt update \
         zlib1g:i386 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
+    && update-alternatives --install /usr/bin/python python /usr/bin/python2.7 10 \
     && pip3 install meson ninja
 
 COPY welcome.sh /usr/bin/
