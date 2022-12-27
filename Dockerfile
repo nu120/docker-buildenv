@@ -14,6 +14,7 @@ RUN apt update \
         bison \
         build-essential \
         ca-certificates \
+        ccache \
         cmake \
         cpio \
         curl \
