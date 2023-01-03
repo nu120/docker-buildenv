@@ -31,6 +31,8 @@ RUN apt update \
         pkg-config \
         python2.7 \
         python3-pip \
+        python-numpy \
+        python-matplotlib \
         rsync \
         sed \
         tcl \
