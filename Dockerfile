@@ -4,6 +4,8 @@ ENV DEBIAN_FRONTEND=noninteractive \
     LANG=C \
     TARGET_BUILD_TYPE=32 \
     TARGET_OUTPUT_DIR=/opt/buildroot/output/mesonaxg_s420_32_release \
+    CCACHE_COMPILERCHECK=content \
+    CCACHE_LOGFILE=/var/log/ccache.log \
     PATH=$PATH:/opt/buildroot/toolchain/gcc/linux-i386/aarch64/gcc-linaro-aarch64-none-elf-4.8-2013.11_linux/bin/
 
 RUN apt update \
