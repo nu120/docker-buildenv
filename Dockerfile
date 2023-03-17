@@ -18,7 +18,7 @@ ENV TARGETPLATFORM=$TARGETPLATFORM \
     CROSS_SYSROOT=/opt/sysroot \
     OUTDIR=/opt/output \
     ARCH=arm \
-    PATH=$PATH:/opt/toolchain/bin
+    PATH=$PATH:/opt/toolchain/bin:/root/.cargo/bin
 
 ENV AS=${CROSS_TRIPLE}-as \
     AR=${CROSS_TRIPLE}-ar \
@@ -38,6 +38,12 @@ ENV AS=${CROSS_TRIPLE}-as \
     DEB_HOST_ARCH_OS=linux \
     TOOLCHAIN_DIR=gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf
 
+# rust cargo options
+#  cargo build -vv --target=armv7-unknown-linux-gnueabihf
+ENV CARGO_TARGET_ARMV7_UNKNOWN_LINUX_GNUEABIHF_LINKER=arm-linux-gnueabihf-gcc \
+    CC_armv7_unknown_Linux_gnueabihf=arm-linux-gnueabihf-gcc \
+    CXX_armv7_unknown_linux_gnueabihf=arm-linux-gnueabihf-g++
+
 COPY toolchain /opt/toolchain
 COPY Toolchain.cmake cross-file.txt /opt/toolchain/
 
@@ -45,6 +51,7 @@ RUN apt update \
     && apt install -y \
         build-essential \
         cmake \
+        curl \
         git \
         pkg-config \
         sed \
@@ -55,5 +62,7 @@ RUN apt update \
     && cp -a /opt/toolchain/arm-linux-gnueabihf/include/* /opt/sysroot/usr/include/ \
     && ln -s /usr/bin/pkg-config /usr/bin/arm-linux-gnueabihf-pkg-config \
     && ln -s /opt/sysroot/usr/lib /usr/lib/arm-linux-gnueabihf \
-    && git config --global --add safe.directory '*'
-
+    && git config --global --add safe.directory '*' \
+    && curl https://sh.rustup.rs -sSf | bash -s -- -y \
+    && rustup target add armv7-unknown-linux-gnueabihf \
+    && rm -rf /root/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/share/doc
