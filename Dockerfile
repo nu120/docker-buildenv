@@ -36,7 +36,7 @@ ENV AS=${CROSS_TRIPLE}-as \
     DEB_HOST_GNU_TYPE=arm-linux-gnueabihf \
     DEB_HOST_MULTIARCH=arm-linux-gnueabihf \
     DEB_HOST_ARCH_OS=linux \
-    TOOLCHAIN_DIR=gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf
+    TOOLCHAIN_DIR=gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf
 
 # rust cargo options
 #  cargo build -vv --target=armv7-unknown-linux-gnueabihf

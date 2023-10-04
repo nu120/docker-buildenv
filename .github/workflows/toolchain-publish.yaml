@@ -1,4 +1,4 @@
-name: toolchain image
+name: toolchain image gcc8
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
     - name: Check out the toolchain repo
       uses: actions/checkout@v3
       with:
-        repository: nu120/toolchain_arm_gcc-linaro-6.3.1
+        repository: nu120/toolchain_arm_gcc-arm-8.3.0
         path: toolchain
         token: ${{ secrets.gh_token }}
     - name: Set up QEMU
@@ -31,4 +31,4 @@ jobs:
         context: .
         platforms: linux/amd64
         push: true
-        tags: ghcr.io/nu120/buildroot:toolchain
+        tags: ghcr.io/nu120/buildroot:toolchain_gcc8
