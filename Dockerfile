@@ -2,10 +2,12 @@ FROM ubuntu:bionic
 
 ENV DEBIAN_FRONTEND=noninteractive \
     LANG=C \
-    TARGET_BUILD_TYPE=32 \
-    TARGET_OUTPUT_DIR=/opt/buildroot/output/mesonaxg_s420_32_release \
+    TARGET_BOARD=s420 \
+    TARGET_BUILD_TYPE=64 \
+    TARGET_OUTPUT_DIR=/opt/buildroot/output/axg_s420_a6432_k54_release \
     CCACHE_COMPILERCHECK=content \
     CCACHE_LOGFILE=/var/log/ccache.log \
+    FORCE_UNSAFE_CONFIGURE=1 \
     PATH=$PATH:/opt/buildroot/toolchain/gcc/linux-i386/aarch64/gcc-linaro-aarch64-none-elf-4.8-2013.11_linux/bin/
 
 RUN apt update \
@@ -28,6 +30,7 @@ RUN apt update \
         help2man \
         flex \
         jq \
+        libssl1.0-dev \
         moreutils \
         patch \
         pkg-config \

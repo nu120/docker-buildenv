@@ -6,12 +6,12 @@ BANNER=$(cat << "EOF"
 
    Build command:
 
-       echo 8 | source ./buildroot/build/setenv.sh
+       source ./buildroot/build/setenv.sh axg_s420_a6432_k54_release
        make
 
    Build artifact:
 
-       output/mesonaxg_s420_32_release/images/aml_upgrade_package.img
+       output/axg_s420_a6432_k54_release/images/aml_upgrade_package.img
 
  ----------------------------------------------------------------------
 EOF
