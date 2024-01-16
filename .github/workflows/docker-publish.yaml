@@ -2,6 +2,8 @@ name: docker image
 
 on:
   push:
+    branches:
+      - buildroot_evk_4_9
 
 jobs:
   build:
@@ -25,4 +27,4 @@ jobs:
         context: .
         platforms: linux/amd64
         push: true
-        tags: ghcr.io/nu120/buildroot:latest,ghcr.io/nu120/buildroot:bionic
+        tags: ghcr.io/nu120/buildroot:evk49,ghcr.io/nu120/buildroot:bionic_evk49
