@@ -1,7 +1,9 @@
-name: docker image
+name: docker image (latest)
 
 on:
   push:
+    branches:
+      - master
 
 jobs:
   build:
