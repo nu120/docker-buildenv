@@ -1,4 +1,4 @@
-name: toolchain image
+name: toolchain image (evk49)
 
 on:
   push:
@@ -31,4 +31,4 @@ jobs:
         context: .
         platforms: linux/amd64
         push: true
-        tags: ghcr.io/nu120/buildroot:toolchain
+        tags: ghcr.io/nu120/buildroot:toolchain_evk49
