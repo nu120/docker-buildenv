@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     CCACHE_COMPILERCHECK=content \
     CCACHE_LOGFILE=/var/log/ccache.log \
     FORCE_UNSAFE_CONFIGURE=1 \
-    PATH=$PATH:/opt/buildroot/toolchain/gcc/linux-i386/aarch64/gcc-linaro-aarch64-none-elf-4.8-2013.11_linux/bin/
+    PATH=$PATH:/opt/buildroot/toolchain/gcc/linux-x86/arm/gcc-arm-none-eabi-6-2017-q2-update/bin
 
 RUN apt update \
     && apt install -y \
@@ -24,7 +24,6 @@ RUN apt update \
         curl \
         dbus \
         elfutils \
-        gcc-arm-none-eabi \
         git \
         graphviz \
         help2man \
@@ -63,6 +62,7 @@ RUN apt update \
     && git config --global user.email "nugulinux@gmail.com" \
     && git config --global user.name "nugulinux-bot" \
     && git config --global color.ui true \
+    && git config --global --add safe.directory $TARGET_OUTPUT_DIR/build/uboot-next-2015-dev \
     && mkdir -p /root/.ssh \
     && ssh-keyscan -t rsa github.com > /root/.ssh/known_hosts \
     && pip3 install meson ninja
