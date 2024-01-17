@@ -57,6 +57,7 @@ RUN apt update \
     && update-alternatives --install /usr/bin/python python /usr/bin/python2.7 10 \
     && curl https://storage.googleapis.com/git-repo-downloads/repo > /usr/bin/repo \
     && chmod +x /usr/bin/repo \
+    && sed -i '1 s/python/python3/' /usr/bin/repo \
     && git config --global user.email "nugulinux@gmail.com" \
     && git config --global user.name "nugulinux-bot" \
     && git config --global color.ui true \
