@@ -8,6 +8,13 @@ SET(cross_root $ENV{CROSS_ROOT})
 SET(CMAKE_C_COMPILER $ENV{CC})
 SET(CMAKE_CXX_COMPILER $ENV{CXX})
 
+SET(CMAKE_AR      ${cross_triple}-ar)
+SET(CMAKE_LINKER  ${cross_triple}-ld)
+SET(CMAKE_OBJCOPY ${cross_triple}-objcopy)
+SET(CMAKE_RANLIB  ${cross_triple}-ranlib)
+SET(CMAKE_SIZE    ${cross_triple}-size)
+SET(CMAKE_STRIP   ${cross_triple}-strip)
+
 SET(CMAKE_C_FLAGS "-I ${cross_root}/include/")
 SET(CMAKE_CXX_FLAGS "-I ${cross_root}/include/")
 
